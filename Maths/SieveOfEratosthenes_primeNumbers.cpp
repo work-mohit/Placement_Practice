@@ -1,7 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 // A vector that initially stores true means all are prime.
-vector<bool> vec(50001,true);    
+vector<bool> vec(50001,true);     // size will be what ever the number 
 
 void printArray(vector<bool> vec, int n){
     int count =0;
@@ -26,7 +26,18 @@ void SieveOfEratosthenes(int n){
     // after that we print only true values from the vector.
     for(int i = 2; i*i<= n;i++){        
         if(vec[i] == true){
-            for(int j = 2*i; j <= n; j+= i){
+            // for i = 2, ,4,6,8,10,..mark
+            // for i = 3,  6,9,12,15, ..mark
+            // for i = 4,  8,12,16,20,24. mark
+            // for i = 5,  10,15,20,25,
+
+            // if we see a patter that we only mark i*i th term so 
+            // for below loop we can intialize j = i * i 
+            // intead of 2*i
+            // for(int j = 2*i; j <= n; j+= i){      
+            //     vec[j] = false;
+            // }
+            for(int j = i*i; j <= n; j+= i){      
                 vec[j] = false;
             }
         }
