@@ -6,8 +6,7 @@ int maxProfit(vector<int>& prices) {
     int maxSell = 0;
     for (int i = 0; i < prices.size(); i++){
         currentBuy = min(currentBuy , prices[i]);             
-        maxSell = max(maxSell,prices[i]-currentBuy);
-        
+        maxSell = max(maxSell,prices[i]-currentBuy); 
     }
     return maxSell;
 }
