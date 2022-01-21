@@ -6,6 +6,8 @@ void printArray(int *arr, int size){
         cout << arr[i] << " ";
     cout << endl;
 }
+
+// Couting Sort Method
 void sortArray(int *arr , int n){
 
     // use count sort logic
@@ -27,9 +29,9 @@ void sortArray(int *arr , int n){
         }
     }
 }
+
 void sort012(int *arr, int n){
     // Three pointer technique
-    
     int low , mid , high;
     low = 0;
     mid = 0;
@@ -37,9 +39,7 @@ void sort012(int *arr, int n){
     
     while(mid <= high){
         if(a[mid] == 0){
-            swap(a[low],a[mid]);
-            low++;
-            mid++;
+            swap(a[low++],a[mid++]);
         }
         else if(a[mid]== 1)
             mid++;

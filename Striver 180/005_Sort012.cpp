@@ -3,7 +3,7 @@
 // Time complexity - O(n log n)
 // class Solution {
 // public:
-//     void sortColors(vector<int>& nums) {
+//     void sort012(vector<int>& nums) {
 //        sort(nums.begin(), nums.end());
 //     }
 // };
@@ -13,7 +13,7 @@
 
 // class Solution {
 // public:
-//     void sortColors(vector<int>& nums) {
+//     void sort012(vector<int>& nums) {
 //         int count0 = 0;
 //         int count1 = 0; 
 //         int count2  = 0;
@@ -43,20 +43,20 @@
 // Time complexity - O(N)
 
 
-void sortColors(vector<int>& nums) {
-        int front = 0;
-        int mid = 0;
-        int high = nums.size()-1;
-        while(mid <= high){
-            if(nums[mid] == 0){
-                swap(nums[front++], nums[mid++]);
-            }  
-            else if(nums[mid] == 1){
-                mid++;
-            }
-            else{
-                swap(nums[mid],nums[high--]);
-            }
+void sort012(vector<int>& nums) {
+    int front = 0;
+    int mid = 0;
+    int high = nums.size()-1;
+    while(mid <= high){
+        if(nums[mid] == 0){
+            swap(nums[front++], nums[mid++]);
+        }  
+        else if(nums[mid] == 1){
+            mid++;
         }
-        
+        else{
+            swap(nums[mid],nums[high--]);
+        }
     }
+    
+}
