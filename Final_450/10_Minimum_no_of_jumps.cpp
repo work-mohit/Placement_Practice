@@ -7,7 +7,7 @@ using namespace std;
 #define siv(a) scanf("%d",a)
 
 typedef long long int lli;
-typedef vector<int> vi;
+
 
 void printArray(int *arr, int size){
     for (int i = 0; i < size; i++)
@@ -19,14 +19,13 @@ void printVector(vector<int>& vec){
         cout << vec[i] << " ";
     cout << endl;
 }
+void mininumJumps(vector<int>& vec){
+
+}
 
 int main(){
-    int t;
-    cin >> t;
-    while(t--){
-        int n ;
-        cin>>n;
-        solve(n);
-    }
+    vector<int> vec = {3,4,5,1,2,3,7,4,0,0,2,4,5};
+    int jumps = mininumJumps(vec);
+    pi(jumps);
     return 0;
 }
