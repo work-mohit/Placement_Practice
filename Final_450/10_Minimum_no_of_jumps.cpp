@@ -19,8 +19,15 @@ void printVector(vector<int>& vec){
         cout << vec[i] << " ";
     cout << endl;
 }
-void mininumJumps(vector<int>& vec){
-
+int mininumJumps(vector<int>& vec){
+    int n = vec.size();
+    int jumps[n] = {0};
+    int cnt = 0;
+    if(n == 1)
+        return cnt;
+    for(int i = 0; i< n ; i++){
+        
+    }
 }
 
 int main(){
