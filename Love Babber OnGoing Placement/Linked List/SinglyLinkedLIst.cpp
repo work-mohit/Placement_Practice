@@ -37,6 +37,7 @@ void insertAtTail(Node* &tail, int key){
     tail->next = newNode;
     tail = newNode;
 }
+// generic method for inserting 
 void insertAtPosition(Node* &head,Node* &tail, int key, int loc){
     if(loc == 1){
         insertAtHead(head,key);
@@ -88,20 +89,23 @@ int main(){
     Node* node = new Node(10);
     Node* tail = node;
     Node* head = node;
+
     insertAtHead(head, 29);
     insertAtHead(head,20);
     insertAtHead(head,45);
     insertAtHead(head,63);
     insertAtTail(tail, 1);
     insertAtPosition(head,tail,72,7);
+
     cout<<"Before Deleting"<<endl;
     printLinkedList(head);
     cout<<endl;
     deleteNode(head,tail, 7);
     cout<<"After Deleting"<<endl;
-    // deleteNode(head, 4);
+    deleteNode(head, 4);
     printLinkedList(head);
     cout<<endl;
+
     cout<<"Head:"<<head->data;
     cout<<endl;
     cout<<"Tail:"<<tail->data;
