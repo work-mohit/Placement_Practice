@@ -24,6 +24,26 @@ vector<int> NSR(vector<int>& nums){
     reverse(v.begin(), v.end());
     return v;
 }
+// different code 
+
+vector<int> printNSL(vector<int>& arr)
+{
+    stack<int> s;
+    vector<int> res(arr.size());  // declare size so that you can access element with indexing 
+    
+    for (int i = arr.size()-1; i >= 0; i--) {
+        if (s.size()!= 0) {
+            while (s.size() > 0 && s.top() <= arr[i]) {
+                s.pop();
+            }
+        }
+        res[i] = s.empty() ? -1 : s.top();
+        s.push(arr[i]); 
+         
+    }
+   
+    return res;
+}
 
 int main(){
     vector<int> v= {1,3,2,4};

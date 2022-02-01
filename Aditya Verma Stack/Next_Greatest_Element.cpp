@@ -23,13 +23,45 @@ vector<int> NGR(vector<int>& nums){
     reverse(v.begin(), v.end());
     return v;
 }
+
+
+// from gfg
+vector<int> printNGE(vector<int>& arr)
+{
+    stack<int> s;
+    vector<int> res(arr.size());
+    
+    for (int i = arr.size() - 1; i >= 0; i--) {
+        
+        // /* if stack is not empty, then
+        // pop an element from stack.
+        // If the popped element is smaller
+        // than next, then
+        // a) print the pair
+        // b) keep popping while elements are
+        // smaller and stack is not empty */
+        if (s.size()!= 0) {
+            while (s.size() > 0 && s.top() <= arr[i]) {
+                s.pop();
+            }
+        }
+        res[i] = s.empty() ? -1 : s.top();
+        s.push(arr[i]); 
+         
+    }
+   
+    return res;
+}
+
 int main(){
-    vector<int> v= {1,8,10,4,5,0};
+    vector<int> v= {1,8,10,4,5};
     cout<<"Vector is :"<<endl;
     for(auto x : v)
         cout<<x<<" ";
     cout<<endl;
-    vector<int> res = NGR(v);
+    cout<<"1 "<<endl;
+    vector<int> res = printNGE(v);
+    
     cout<<"Nearest Greater to right are :"<<endl;
     for(auto x : res)
         cout<<x<<" ";
