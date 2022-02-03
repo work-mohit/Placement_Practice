@@ -1,62 +1,60 @@
+// DP Solution
+
 class Solution {
 public:
     int trap(vector<int>& height) {
-        
-        vector<int> v;
-        stack<pair<int, int>> s;
         int n = height.size();
+        int maxL[n], maxR[n];
         
-        vector<int> greatLeft(n,-1);   // store index to calculate width
-        vector<int> smallLeft(n,-1);   // store value to calculate the length of the rectangular shaped water.
+        maxL[0] = height[0];
         
-        // NGR
-        for(int i = n-1 ; i>=0;i--){
-            if(s.size()!=0){
-                while(s.size() > 0 && s.top().first <= height[i]){
-                    s.pop();
-                }
-                greatLeft[i] = s.empty() ? -1 : s.top().second;
-                
-            }
-          s.push({height[i], i});      
+        for(int i = 1; i < n ; i++){
+            maxL[i] = max(maxL[i-1], height[i]);
         }
         
-        while(!s.empty())   // clear stack for next op
-            s.pop();
+        maxR[n-1] = height[n-1];
         
-        // NSR
-        for(int i = n-1 ; i>=0;i--){
-            if(s.size()!=0){
-                while(s.size() > 0 && s.top().first >= height[i]){
-                    s.pop();
-                }
-                smallLeft[i] = s.empty() ? -1 : s.top().first;
-       
-            }
-          s.push({height[i], i});      
+        for(int i = n-2; i>=0 ; i--){
+            maxR[i] = max(maxR[i+1], height[i]);
         }
-        for(auto x : smallLeft)
-            cout<<x<<" ";
-        cout<<endl;
-        for(auto x : greatLeft)
-            cout<<x<<" ";
-        cout<<endl;
+         
         int sum = 0;
-        int w , h;
-        for(int i = 0 ; i < n; i++){
-            w = greatLeft[i] - i -1;  // -1 is the gap b/w to buildings
-            if(smallLeft[i] >= 0)
-                h = height[i] - smallLeft[i];
+        for(int i =0 ; i< n; i++){
+            sum = sum + (min(maxL[i], maxR[i]) - height[i]);
             
-                
-            if(w >= 0 && h >= 0)
-                sum += w * h;
         }
-        
         return sum;
     }
     
 };
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Using Stacks'
+
+
+class Solution {
+public:
+    int trap(vector<int>& height) {
+        int res = 0;
+        stack<int> s;
+        int n = height.size();
+        for(int i = 0; i< n; i++){
+            if(!s.empty() &&height[i] > height[s.top()]){
+                int top = s.top();
+                s.pop();
+
+                width = i - s.top() -1;
+                height = min(height[i], height[s.top()]) - height[top];
+                res += widht * height;
+            }
+            s.push(i);
+        }
+        return res;
+    }
+};
+
 
 
 
@@ -67,24 +65,19 @@ public:
 class Solution {
 public:
     int trap(vector<int>& height) {
-        int ans = 0;
-        int left = 0;
-        int right = height.size()-1;
-        while(left < right)
-        {
-            if(height[left] <= height[right])
-            {
-                int curr = left;
-                while(height[++left] < height[curr])
-					ans += height[curr] - height[left];
-            }
-            else
-            {
-                int curr = right;
-                while(height[--right] < height[curr])
-					ans += height[curr] - height[right];
+        int i = 0 , j = height.size()-1, maxLeft = 0 , maxRight = 0, water = 0;
+        
+        while(i < j){
+            if(height[i] <= height[j]){
+                maxLeft = max(maxLeft, height[i]);
+                water += maxLeft - height[i];
+                i++;
+            }else{
+                maxRight = max(maxRight, height[j]);
+                water += maxRight - height[j];
+                j--;
             }
         }
-        return ans;
+        return water; 
     }
 };
