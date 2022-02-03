@@ -58,14 +58,14 @@ int maxArea(vector<int>& arr){
     return maxarea;
 }
 int main(){
-    vector<int> arr ={6,2,5,4,5,1,6};
+    vector<int> arr ={2,3,3,2};
     int area = maxArea(arr);
     cout<<"Maximum area of histogram is "<<area;
     
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Same Approach - Better Code 
+Same Approach - Better Code 
 class Solution {
 private:
     int maxArea(vector<int>& arr){
