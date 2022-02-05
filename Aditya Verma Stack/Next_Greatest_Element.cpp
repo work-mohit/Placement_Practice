@@ -60,7 +60,7 @@ int main(){
         cout<<x<<" ";
     cout<<endl;
     cout<<"1 "<<endl;
-    vector<int> res = printNGE(v);
+    vector<int> res = NGR (v);
     
     cout<<"Nearest Greater to right are :"<<endl;
     for(auto x : res)
