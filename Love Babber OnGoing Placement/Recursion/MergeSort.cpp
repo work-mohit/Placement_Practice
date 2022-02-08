@@ -24,11 +24,6 @@ void merge(int *arr, int low , int high){
     for (int i = 0; i < len2;i++){
         arr2[i] = arr[mainIdx++];
     }
-    // cout<<"arr1:";
-    // printArray(arr1,len1);
-    // cout<<"arr2:";
-    // printArray(arr2,len2);
-    // merge 2 sorted array
 
     int idx1 = 0;
     int idx2 = 0;
