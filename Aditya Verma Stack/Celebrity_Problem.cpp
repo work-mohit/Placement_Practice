@@ -1,5 +1,4 @@
-// { Driver Code Starts
-//Initial template for C++
+//  TC: O(N)  SC: O(N)
 
 #include<bits/stdc++.h>
 using namespace std;
@@ -75,4 +74,34 @@ int main()
 
     }
 }
-  // } Driver Code Ends
+ 
+/////////////////////////////////////////////////////////////////////////////////
+/// Two Pointers Approach 
+
+// TC : O(N)  SC: O(1)
+class Solution 
+{
+    public:
+    //Function to find if there is a celebrity in the party or not.
+    int celebrity(vector<vector<int> >& M, int n) 
+    {
+        int i = 0;
+        int j = n-1;
+        while(i < j){
+            if(M[i][j] == 1)
+                i++;
+            else
+                j--;
+       }
+       int candidate = i;
+       
+       for(i = 0; i< n; i++){
+           if(i != candidate){
+               if(M[i][candidate] == 0|| M[candidate][i])
+                    return -1;
+           }
+       }
+       return candidate;
+    }
+};
+
