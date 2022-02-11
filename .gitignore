@@ -20,3 +20,4 @@ jboss/server/minimal/work/**/*
 *.exe
 tempCodeRunnerFile.cpp
 .vscode
+temp.c
