@@ -6,9 +6,9 @@ int firstOcc(vector<int>& arr,int n, int k){
     int mid = s + (e - s)/2;
     int ans = -1;
    	while(s <= e){
-		if(arr[mid] == k){
-            ans = mid;
-            e = mid - 1;
+		if(arr[mid] == k){                   //           |
+            ans = mid;                       //           |  Main Part if we found our element in the mid then for first occurence
+            e = mid - 1;                     //           |  we have to move left side 
         }else if(arr[mid] > k){
             e = mid-1;
         }else{
