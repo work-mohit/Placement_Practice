@@ -111,7 +111,7 @@ public:
     // Returns true if the deque is full. Otherwise returns false.
     bool isFull()
     {
-        if(rear == size-1 && front == 0 || front != 0 && rear == (front - 1) % (size -1))
+        if(front == 0 && rear == size-1 || front != 0 && rear == (front - 1) % (size -1))
             return true;
         return false;
     }
