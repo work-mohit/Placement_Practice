@@ -22,30 +22,30 @@ vector<long long> printFirstNegativeInteger(long long int A[],
                                              long long int N, long long int K) {
     vector<long long int> ans;
     
-    deque<long long int> dq;
+    queue<long long int> dq;
     
     
     for(int i =0; i< K;i++){
         if(A[i]< 0)
-            dq.push_back(i);     // we store index in deque
+            dq.push(i);     // we store index in deque
     }
     if(dq.empty())
-        ans.push_back(0);
+        ans.push(0);
     else
-        ans.push_back(A[dq.front()]);
+        ans.push(A[dq.front()]);
         
     for(int i = K; i < N; i++){
         if(!dq.empty() && i - dq.front() >= K)        // this is the condition that dq have index 
-              dq.pop_front();                           // that is currenly not it our range
+              dq.pop();                           // that is currenly not it our range
         
        
         if(A[i]< 0)
-            dq.push_back(i);     // we store index in deque
+            dq.push(i);     // we store index in deque
         
         if(dq.empty())
-            ans.push_back(0);
+            ans.push(0);
         else
-            ans.push_back(A[dq.front()]);
+            ans.push(A[dq.front()]);
         
     } 
     
