@@ -13,7 +13,7 @@ class Node{
             this -> right = NULL;
         }
         
-};
+}; 
 Node* buildtree(Node* root){
     
     cout<<"Enter the data:"<<endl;
