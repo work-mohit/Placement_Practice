@@ -10,14 +10,14 @@ class Solution
         pair<bool,int> leftans = helper(root->left);
         pair<bool,int> rightans = helper(root->right);    
         
-        bool left = leftans.first;
-        bool right = rightans.first;
+        bool isleftSubTree = leftans.first;
+        bool isrightSubTree = rightans.first;
         
         bool cond = (leftans.second + rightans.second) == root->data;
         
         int ans = root->data * 2;
         
-        if(left && right && cond)
+        if(isleftSubTree && isrightSubTree && cond)
             return {true, ans};
         return {false,ans};
         

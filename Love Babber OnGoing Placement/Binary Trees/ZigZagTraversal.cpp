@@ -12,7 +12,7 @@ class Solution{
     	dq.push_back(root);
     	v.push_back(root->data);
         Node* temp = NULL;
-        bool level = 1;
+        int level = 1;
         
         while(!dq.empty()){
             int n = dq.size();
