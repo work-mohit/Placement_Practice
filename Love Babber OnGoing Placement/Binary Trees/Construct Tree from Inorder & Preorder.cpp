@@ -27,6 +27,40 @@ class Solution{
     Node* buildTree(int in[],int pre[], int n)
     {
         int preIndex = 0;
-        return solve(in, pre , n, preIndex ,0 , n);
+        return solve(in, pre , n, preIndex ,0 , n-1);
+    }
+};
+
+///////// 
+// with making maping of the positions 
+
+class Solution{
+    public:
+    void makeMapping(int in[] , int n, map<int, int> &m){
+        for(int i = 0 ; i < n; i++){
+            m[in[i]] = i;
+        }
+    }
+    Node* solve(int in[],int pre[], int n, int &index, int inorderStart, int inorderEnd, map<int,int> &m){
+        if(index >= n || inorderStart > inorderEnd)
+            return NULL;
+            
+        int ele = pre[index++];
+        Node* root = new Node(ele);
+        
+        int pos = m[ele];
+        
+        
+        root->left = solve(in, pre, n,index, inorderStart, pos-1, m);
+        root->right = solve(in, pre, n ,index , pos +1, inorderEnd, m);
+        
+        return root;
+    }
+    Node* buildTree(int in[],int pre[], int n)
+    {
+        int preIndex = 0;
+        map<int,int> m;
+        makeMapping(in, n , m);
+        return solve(in, pre , n, preIndex ,0 , n-1,m);
     }
 };
