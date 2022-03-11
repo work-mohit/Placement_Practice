@@ -33,6 +33,7 @@ class Solution{
 
 ///////// 
 // with making maping of the positions 
+// inorder and preorder
 
 class Solution{
     public:
@@ -64,3 +65,37 @@ class Solution{
         return solve(in, pre , n, preIndex ,0 , n-1,m);
     }
 };
+
+
+// inorder and postorder
+
+void makeMapping(int in[] , int n, map<int, int> &m){
+        for(int i = 0 ; i < n; i++){
+            m[in[i]] = i;
+        }
+    }
+Node* solve(int in[],int post[], int n, int &index, int inorderStart, int inorderEnd, map<int,int> &m){
+    if(index < 0 || inorderStart > inorderEnd)
+        return NULL;
+    
+    int ele = post[index--];
+    Node* root = new Node(ele); 
+    
+    if(inorderStart == inorderEnd)
+        return root; 
+        
+    int pos = m[ele];
+    
+    root->right = solve(in, post, n ,index , pos+1, inorderEnd, m);
+    root->left = solve(in, post, n,index, inorderStart, pos-1, m);
+    
+    
+    return root;
+}
+Node* buildTree(int in[],int post[], int n)
+{
+    int postIndex = n-1;
+    map<int,int> m;
+    makeMapping(in, n , m);
+    return solve(in, post , n, postIndex ,0,n-1,m);
+}
