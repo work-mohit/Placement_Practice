@@ -82,7 +82,6 @@ class Solution{
                 frontNode = q.front();
                 q.pop();
                 
-                
                 int idx = flag ? i : n-i-1;
                 temp[idx] = frontNode->data;
                 
