@@ -14,10 +14,14 @@ pair<int, int> countGoodBadPathsHelper(TreeNode<int> *root, int &good, int &bad)
     }
 
     // Call the function for both the left and right child.
-    pair<int, int> p1 = countGoodBadPathsHelper(root->left, good, bad);
-    pair<int, int> p2 = countGoodBadPathsHelper(root->right, good, bad);
+    // first go till the last and then come backward
 
-    // Initialize 'g' and 'b' to 1
+    pair<int, int> left = countGoodBadPathsHelper(root->left, good, bad);
+    pair<int, int> right = countGoodBadPathsHelper(root->right, good, bad);
+
+    //  Initialize 'g' and 'b' to 1
+    //  because we also count each individual node as good and bad 
+
     int g = 1, b = 1;
 
     // If the left child is not NULL.
@@ -27,14 +31,15 @@ pair<int, int> countGoodBadPathsHelper(TreeNode<int> *root, int &good, int &bad)
         if (root->data < root->left->data) {
 
             // Add the count of good paths of child to parent.
-            g += p1.first;
+            g += left.first;
         }
-
+        // we can also put an else statement  here
         // Check if the value is decreasing from parent to child.
         if (root->data > root->left->data) {
 
             // Add the count of bad paths of child to parent.
-            b += p1.second;
+            // we are keeping bad paths on second
+            b += left.second;
         }
     }
     if (root->right != NULL) {
@@ -43,14 +48,14 @@ pair<int, int> countGoodBadPathsHelper(TreeNode<int> *root, int &good, int &bad)
         if (root->data < root->right->data) {
 
             // Add the count of good paths of child to parent.
-            g += p2.first;
+            g += right.first;
         }
 
         // Check if the value is decreasing from parent to child.
         if (root->data > root->right->data) {
 
             // Add the count of bad paths of child to parent.
-            b += p2.second;
+            b += right.second;
         }
     }
 
@@ -67,7 +72,7 @@ pair<int, int> countGoodBadPaths(TreeNode<int> *root){
 
     // 'good' stores the total good paths.
     int good = 0;
-    // 'good' stores the total good paths.
+    // 'bad' stores the total bad paths.
     int bad = 0;
 
     countGoodBadPathsHelper(root, good, bad);
