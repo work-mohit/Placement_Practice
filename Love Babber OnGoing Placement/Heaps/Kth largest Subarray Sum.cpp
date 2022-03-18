@@ -35,4 +35,4 @@ int getKthLargest(vector<int> &arr, int k)
         }  
     }
     return pq.top();
-}
+};
