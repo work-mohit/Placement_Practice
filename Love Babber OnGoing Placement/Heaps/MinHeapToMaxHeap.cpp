@@ -23,7 +23,6 @@ void convertMaxHeap(int arr[], int n){
     for(int i = n/2 -1; i>= 0; i--){
         Heapify(arr, i , n);
     }
-
 }
 void printArray(int arr[], int size)
 {
