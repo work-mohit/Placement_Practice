@@ -20,7 +20,7 @@ class Solution{
     }
 };
 ////////////////
-
+// O(N*logN)
 class Solution{
     public:
     // arr : given array
@@ -32,3 +32,7 @@ class Solution{
         return arr[k-1];
     }
 };
+
+
+//////
+// quick select method avg O(n) TC
