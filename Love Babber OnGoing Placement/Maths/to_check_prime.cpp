@@ -12,7 +12,8 @@ bool isPrime(int n){
     return false;
 }
 int main(){
-    int n = 997;
+    int n = 625;
+    
     if(isPrime(n))
         cout<<"is prime";
     else 
