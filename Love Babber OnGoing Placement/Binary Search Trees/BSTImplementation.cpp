@@ -47,7 +47,7 @@ Node* minVal(Node* root){
     while(temp->left != NULL){
         temp = temp -> left;
     }
-    return root;
+    return temp;
 }
 Node* deleteFromBST(Node* root, int x){
     // base case 
@@ -76,7 +76,7 @@ Node* deleteFromBST(Node* root, int x){
         if(root->left != NULL && root->right != NULL)
             Node* mini = minVal(root->right);  // get min value form the right subtree.
             root->data = mini->data;
-            root->right = deleteFromBST(root->right, mini);
+            root->right = deleteFromBST(root->right, mini->data);
             // return root;
         }
     }

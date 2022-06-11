@@ -18,7 +18,7 @@ BinaryTreeNode<int>* preorderToBST(vector<int> &pre) {
     return preToBST(pre, leftmin,rightmax, i);
 }
 
-//////
+//////////////////////////////////////////////////////////////////////////
 
 void makeMapping(vector<int> &in , int n, map<int, int> &m){
 	 for(int i = 0 ; i < n; i++){
