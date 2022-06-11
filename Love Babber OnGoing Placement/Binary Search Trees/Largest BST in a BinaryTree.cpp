@@ -35,3 +35,36 @@ int largestBST(TreeNode<int>* root)
    	info temp = returnHeightOfLargestBST(root, maxSize);
     return maxSize;
 }
+////////////////////////////////////////////////////
+// GFG soltion 
+
+class Solution{
+    public:
+    /*You are required to complete this method */
+    // Return the size of the largest sub-tree which is also a BST
+    int size(Node* root){
+        if(root == NULL)
+            return 0;
+        return size(root->left)+ size(root->right) + 1;
+    }
+    bool isBST(Node *root ,int mini , int maxi){
+        if(root == NULL)
+            return true;
+        
+        bool isleft = isBST(root->left , mini , root->data);
+        bool isright = isBST(root->right, root->data, maxi);
+        
+        if(mini >= root-> data || maxi <= root-> data) 
+            return false;
+       
+        
+        return isleft && isright;
+    }
+    int largestBst(Node *root)
+    {
+    	if(isBST(root, INT_MIN, INT_MAX))
+    	    return size(root);
+    	 else
+    	    return max(largestBst(root->left) , largestBst(root->right));
+    }
+};
