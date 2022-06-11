@@ -30,7 +30,7 @@ public:
         solve(nums,res, 0);
         do{
             res.push_back(nums);
-        }while(next_permutation(nums.begin(), nums.end()));
-        return res;
+        }while(next_permutation(nums.begin(), nums.end()));   // ye inbuild hai STL me 
+        return res; 
     }
 };
