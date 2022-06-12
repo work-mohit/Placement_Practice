@@ -14,7 +14,6 @@ public:
         return root1;
     }
     
-   
     TreeNode* mergeTrees(TreeNode* root1, TreeNode* root2) {
         
         return solve(root1, root2);
