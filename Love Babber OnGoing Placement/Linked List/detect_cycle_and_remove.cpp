@@ -86,7 +86,7 @@ void deleteNode(Node* &head,Node* &tail, int position){
 bool detectLoop(Node* head){
     if(head==NULL)
         return false;
-    map<Node*, int> visited;
+    map<Node*, bool> visited;
     Node* temp  = head;
     while(temp != NULL){
         if(visited[temp] == true)
