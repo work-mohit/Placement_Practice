@@ -8,7 +8,7 @@ public:
             // whole string length ko substring divide kre tbhi kuch hoga
             if(n % i == 0){
                 int num_repeated = n / i;
-                
+                 
                 string substr = s.substr(0,i);
                 
                 string temp = "";
