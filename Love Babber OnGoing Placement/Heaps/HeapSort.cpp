@@ -64,6 +64,13 @@ class Heap{
             cout<<ele<<" is deleted from heap."<<endl;
         }
 };
+
+void printArray(int arr[] , int n){
+    for(int i = 1; i <= n; i++){
+        cout<<arr[i]<<" ";
+    }
+    cout<<endl;
+}
 void heapify(int arr[], int n , int i){
     int largest = i;
 
@@ -88,6 +95,8 @@ void heapSort(int* arr,int n){
         swap(arr[size], arr[1]);
         size--;
         heapify(arr, size, 1);
+        cout<<"Size = "<<size+1<<" and array is : ";
+        printArray(arr,n);
     }
     
 }
@@ -103,25 +112,22 @@ int main(){
     // h.deleteFromHeap();
     // h.printHeap();
 
-    int arr[6] ={-1,55,53,59,60,23};
-    int n = 5;
+    int arr[7] ={-1,60,50,55,30,20,40};
+    int n = 6;
+    cout<<"Inital Array:\n";
+    printArray(arr, n);
     // heap creation 
     for(int i = n/2; i> 0; i--){
         heapify(arr, n, i);
     }
-
+    cout<<"After Heapify :";
+    printArray(arr,n);
     
-    for(int i = 1; i <= n; i++){
-        cout<<arr[i]<<" ";
-    }
-    cout<<endl;
+   
 
     //heap sort 
     heapSort(arr, n);
-    cout<<"sorted array:"<<endl;
-    for(int i = 1; i <= n; i++){
-        cout<<arr[i]<<" ";
-    }
-    cout<<endl;
+    cout<<"sorted array:\n";
+    printArray(arr,n);
     return 0;
 }

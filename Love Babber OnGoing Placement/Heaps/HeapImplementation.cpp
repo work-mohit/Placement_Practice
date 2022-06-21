@@ -41,8 +41,8 @@ class Heap{
                 cout<<"Nothing to delete";
                 return;
             }
-            int ele = arr[size];
-            arr[1] = arr[size];
+            int ele = arr[size];   // isko save krlo dikhane ke kaaam aaega
+            arr[1] = arr[size];    // first me last ka data daal do 
             size--;
             
             int i = 1;
