@@ -65,8 +65,7 @@ Node* deleteFromBST(Node* root, int x){
             Node* temp = root->left;
             delete root;
             return temp;
-        }
-        // 1 right child
+        }-
         if(root->left == NULL && root->right != NULL){
             Node* temp = root->right;
             delete root;
